@@ -1,6 +1,5 @@
 
 
-Client Secret: 55d4aad84c15230d56c2de709df8d4dce04c397d
 
 ```shell
 python -m pip install --upgrade pip
