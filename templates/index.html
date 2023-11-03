@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block page_header %}
+<p>Page Header to come</p>
+{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl text-sky-700">Welcome, Stranger!</h1>
+
+<p class="text-2xl text-stone-600 my-4">
+    {{ login_status }}
+</p>
+
+<div class="my-8 flex flex-col gap-4">
+    {% if profile %}
+    <p>Name: {{ profile.name }}</p>
+    <p>Avatar:  <img alt="{{ profile.name }} Avatar"
+             class="w-16 rounded-full"
+             src="{{ profile.avatar_url }}">
+    </p>
+
+    <p>eMail: {{ profile.email}}</p>
+    <p>Member Since: {{ profile.since }}</p>
+    <p>Member Since: {{ profile.location }}</p>
+    <p>Repos: <a href="{{ profile.repos_url }}">
+        {{ profile.public_repos }}
+    </a></p>
+    <p>Bio: {{ profile.bio }}</p>
+    <p class="w-1/3">
+        <a href="{{url_for('logout')}}"
+           class="p-4 py-2 bg-gray-200 border hover:bg-amber-500">
+            Log Out</a>
+    </p>
+    {% else %}
+    <p class="w-1/3">
+        <a href="{{ url_for('github_login') }}"
+           class="p-4 py-2 bg-gray-200 border hover:bg-sky-500">
+            Log in with GitHub
+        </a>
+    </p>
+    {% endif %}
+</div>
+
+{% endblock %}
+
+{% block page_footer %}
+<p>Page Footer to come</p>
+{% endblock %}
